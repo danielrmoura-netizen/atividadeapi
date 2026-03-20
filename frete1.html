@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cabritos Global | Fretes</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<header>
+<div class="container nav-wrapper">
+<div class="logo">📦 Logística</div>
+<a href="/index.html" class="btn-back">⬅ Voltar à Loja</a>
+</div>
+</header>
+
+<div class="main-content">
+<div class="calculator-card">
+
+<h2>Calculadora de Frete</h2>
+<p>Informe seu CEP para calcular o custo de envio exato para sua região.</p>
+
+<input type="text" id="cepInput" placeholder="00000-000" maxlength="9" autocomplete="off">
+
+<button class="btn-calc" onclick="calcularFrete()">
+Consultar Valor
+</button>
+
+<div id="loading" class="loader"></div>
+
+<div id="resultado" class="result-box"></div>
+
+</div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
