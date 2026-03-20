@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cabritos Global | Vitrine 6</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Paleta Ultra-Premium (Tendência 2024/2025) */
+            --primary: #020617;        /* Slate 950 - Preto super profundo */
+            --primary-light: #1e293b;  
+            --accent: #6366f1;         /* Indigo vibrante e sofisticado */
+            --accent-hover: #4f46e5;   
+            --success: #10b981;        
+            --success-bg: #ecfdf5;     /* Fundo esmeralda super claro */
+            --success-border: #a7f3d0;
+            --success-text: #047857;
+            
+            /* Textos */
+            --text-main: #0f172a;
+            --text-light: #64748b;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            
+            /* Sistema de Sombras Avançado (Diffused Shadows) */
+            --shadow-float-btn: 0 10px 25px -5px rgba(99, 102, 241, 0.4), 0 8px 10px -6px rgba(99, 102, 241, 0.2);
+            --shadow-card-idle: 0 4px 6px -1px rgba(0,0,0,0.03), 0 2px 4px -2px rgba(0,0,0,0.03);
+            --shadow-card-hover: 0 25px 50px -12px rgba(0,0,0,0.15), 0 0 0 1px rgba(99, 102, 241, 0.1);
+            
+            /* Animação Elástica (Spring) */
+            --spring-easing: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --smooth-easing: cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            /* Mesh gradient super sutil para o fundo */
+            background-color: #f8fafc;
+            background-image: radial-gradient(circle at 100% 0%, #e0e7ff 0%, transparent 25%),
+                              radial-gradient(circle at 0% 100%, #f1f5f9 0%, transparent 25%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* HEADER - Efeito Glassmorphism Puro */
+        header {
+            background: rgba(2, 6, 23, 0.75); /* Fundo translúcido */
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: white;
+            padding: 1.25rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo { 
+            font-size: 1.5rem; 
+            font-weight: 800; 
+            display: flex; 
+            align-items: center; 
+            gap: 12px;
+            letter-spacing: -0.8px;
+            background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Botão Nav Flutuante Moderno */
+        .btn-nav {
+            text-decoration: none;
+            color: white;
+            background: var(--accent);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            transition: all 0.4s var(--spring-easing);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .btn-nav:hover { 
+            background: var(--accent-hover);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: var(--shadow-float-btn);
+        }
+
+        /* Ticker Vidro Fosco */
+        .ticker-box {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-family: 'Inter', monospace;
+            font-weight: 600;
+            font-size: 0.95rem;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+
+        /* CONTEÚDO PRINCIPAL */
+        .main-container {
+            flex: 1;
+            max-width: 1400px;
+            width: 100%;
+            margin: 60px auto;
+            padding: 0 30px;
+        }
+
+        .page-title {
+            font-size: clamp(2rem, 5vw, 2.75rem);
+            color: var(--primary);
+            margin-bottom: 50px;
+            font-weight: 800;
+            text-align: center;
+            letter-spacing: -1.5px;
+            background: linear-gradient(135deg, #020617 0%, #334155 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* GRID */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        /* CARDS ULTRA-PREMIUM */
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 28px; 
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-card-idle);
+            transition: all 0.5s var(--smooth-easing);
+            position: relative;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 28px;
+            padding: 2px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(255,255,255,0) 50%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-card-hover);
+        }
+        
+        .img-box {
+            height: 320px;
+            width: 100%;
+            background: #f1f5f9;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .img-box::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.2) 0%, transparent 40%);
+            z-index: 1;
+        }
+        
+        .img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1s var(--smooth-easing);
+        }
+
+        .card:hover .img-box img { 
+            transform: scale(1.06); 
+        }
+        
+        .card-body {
+            padding: 2.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 2;
+        }
+
+        .category { 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            color: var(--accent); 
+            font-weight: 800; 
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+            background: rgba(99, 102, 241, 0.1);
+            align-self: flex-start;
+            padding: 6px 14px;
+            border-radius: 8px;
+            border: 1px solid rgba(99, 102, 241, 0.15);
+        }
+
+        .title { 
+            font-size: 1.4rem; 
+            font-weight: 800; 
+            margin-bottom: 15px; 
+            color: var(--primary); 
+            line-height: 1.3; 
+            letter-spacing: -0.5px;
+        }
+
+        .price-usd { 
+            font-size: 2.4rem; 
+            font-weight: 800; 
+            color: var(--text-main); 
+            margin-top: auto; 
+            margin-bottom: 30px;
+            letter-spacing: -1.5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* BOTÃO CONVERTER - Refinado */
+        .btn-convert {
+            width: 100%; 
+            padding: 16px; 
+            font-size: 1rem; 
+            border: 2px solid #e2e8f0; 
+            background: white; 
+            color: var(--primary); 
+            font-weight: 700; 
+            cursor: pointer; 
+            border-radius: 16px;
+            transition: all 0.4s var(--spring-easing);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        
+        .btn-convert:hover { 
+            background: var(--primary); 
+            color: white; 
+            border-color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 20px -8px rgba(2, 6, 23, 0.4);
+        }
+
+        .btn-convert:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+
+        /* RESULTADO EM REAIS - Look "Neon/Recibo" */
+        .brl-result { 
+            margin-top: 20px; 
+            padding: 20px; 
+            background: var(--success-bg); 
+            border-radius: 16px; 
+            display: none; 
+            text-align: center;
+            border: 1px solid var(--success-border);
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.5), 0 4px 6px rgba(16, 185, 129, 0.05);
+            animation: slideUpSpring 0.6s var(--spring-easing) forwards;
+            transform-origin: top;
+        }
+
+        @keyframes slideUpSpring {
+            0% { opacity: 0; transform: translateY(20px) scale(0.95); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .brl-value { 
+            font-size: 1.9rem; 
+            font-weight: 800; 
+            color: var(--success-text); 
+            display: block; 
+            letter-spacing: -1px;
+        }
+
+        /* RODAPÉ ELEGANT */
+        footer {
+            background: var(--primary);
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 80px;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #6366f1, #a855f7, #ec4899);
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 1024px) {
+            .products-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-wrapper { flex-direction: column; gap: 20px; }
+            .products-grid { grid-template-columns: 1fr; max-width: 450px; margin: 0 auto; gap: 30px;}
+            .main-container { padding: 0 20px; margin: 40px auto; }
+            .img-box { height: 280px; }
+            header { padding: 1.25rem; }
+            .page-title { margin-bottom: 30px; }
+            .logo { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-wrapper">
+            <div class="logo">🐐 Cabritos Global</div>
+            <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap; justify-content: center;">
+                <div class="ticker-box" id="ticker">Carregando...</div>
+                <a href="frete/frete1.html" class="btn-nav">Fretes</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <h2 class="page-title">Seleção Exclusiva (6 Itens)</h2>
+        
+        <div class="products-grid" id="grid"></div>
+    </div>
+
+    <footer>
+        <p>© 2026 Cabritos Global Importados. Todos os direitos reservados.</p>
+        <p style="font-size: 0.85rem; margin-top: 8px; opacity: 0.6;">Valores sujeitos a alteração cambial.</p>
+    </footer>
+
+    <script>
+        // --- CONFIGURAÇÃO (APPLE WATCH REMOVIDO) ---
+        const unsplashBase = "https://images.unsplash.com/photo-";
+        const unsplashParams = "?auto=format&fit=crop&w=800&q=90"; 
+
+        // Lista reduzida para 6 itens
+        const products = [
+            { id: 1, name: "PlayStation 5 Slim", cat: "Sony", usd: 449.00, imgId: "1606813907291-d86efa9b94db" },
+            { id: 2, name: "iPad Air 5 (M1)", cat: "Apple", usd: 599.00, imgId: "1544244015-0df4b3ffc6b0" },
+            { id: 3, name: "Kindle Paperwhite", cat: "Amazon", usd: 139.00, imgId: "1592496431122-2349e0fbc666" },
+          { id: 4, name: "Nintendo Switch OLED", cat: "Nintendo", usd: 349.00, imgId: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Nintendo_Switch_OLED_Model_white.jpg" },
+            // Item 5 removido aqui
+            { id: 6, name: "Headphone Sony XM5", cat: "Áudio", usd: 348.00, imgId: "1618366712010-f4ae9c647dcb" },
+            { id: 7, name: "Monitor Gamer 144hz", cat: "Setup", usd: 249.00, imgId: "1527443224154-c4a3942d3acf" }
+        ];
+
+        let cotacaoDolar = 0;
+
+        async function buscarDolar() {
+            const ticker = document.getElementById('ticker');
+            try {
+                const response = await fetch('https://economia.awesomeapi.com.br/json/last/USD-BRL');
+                const data = await response.json();
+                cotacaoDolar = parseFloat(data.USDBRL.bid);
+                ticker.innerHTML = `🇺🇸 USD: <strong>${formatBRL(cotacaoDolar)}</strong>`;
+                ticker.style.color = "#4ade80";
+            } catch (error) {
+                cotacaoDolar = 5.60;
+                ticker.innerHTML = "USD Offline (5.60)";
+            }
+        }
+
+        function carregarProdutos() {
+            const grid = document.getElementById('grid');
+            grid.innerHTML = "";
+
+            products.forEach(p => {
+                const fullImgUrl = `${unsplashBase}${p.imgId}${unsplashParams}`;
+                grid.innerHTML += `
+                <div class="card">
+                    <div class="img-box">
+                        <img src="${fullImgUrl}" alt="${p.name}" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <div class="category">${p.cat}</div>
+                        <div class="title">${p.name}</div>
+                        <div class="price-usd">${formatUSD(p.usd)}</div>
+                        <button class="btn-convert" onclick="converter(this, ${p.usd})">VER EM REAIS</button>
+                        <div class="brl-result">
+                            <span class="brl-value">R$ ...</span>
+                        </div>
+                    </div>
+                </div>`;
+            });
+        }
+
+        function converter(botao, valorEmDolar) {
+            if (cotacaoDolar === 0) return;
+            const valorEmReais = valorEmDolar * cotacaoDolar;
+            const cardBody = botao.parentElement;
+            cardBody.querySelector('.brl-result').style.display = "block";
+            cardBody.querySelector('.brl-value').innerText = formatBRL(valorEmReais);
+            botao.innerHTML = "✅ Atualizado";
+            botao.style.background = "#020617"; botao.style.color = "white"; botao.style.borderColor = "#020617";
+            botao.style.boxShadow = "none";
+        }
+
+        const formatUSD = (v) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(v);
+        const formatBRL = (v) => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(v);
+
+        buscarDolar();
+        carregarProdutos();
+    </script>
+</body>
+</html>
